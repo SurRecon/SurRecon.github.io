@@ -422,7 +422,7 @@
           <div class="hero-body" style="padding: 0;">
             <div class="content has-text-centered">
               <div class="thumbnail-container", id="thumbnail-comparison", data-selected-name="Colosseum">                
-                <img src="resources/assets/s3.png" name="college">
+                <img src="resources/assets/s3.png" name="s3">
                 <!-- <img src="resources/comparison/assets/oil.png" name="oil">
                 <video src="resources/comparison/assets/fern.mp4" name="fern" loop playsinline muted></video>
                 <video src="resources/comparison/assets/pyramid.mp4" name="pyramid" loop playsinline muted></video> -->
@@ -526,12 +526,12 @@
           const modelViewer2 = document.getElementById('modelViewerComparison2');
           const modelViewer3 = document.getElementById('modelViewerComparison3');
           
-          modelViewer1.setAttribute('src', `resources/comparison/ours/${name}.glb`);
-          modelViewer2.setAttribute('src', `resources/comparison/dust3r/${name}.glb`);
+          modelViewer1.setAttribute('src', `resources/mesh/surrecon_${name}_n10.glb`);
+          modelViewer2.setAttribute('src', `resources/mesh/2dgs_${name}_n10.glb`);
           
-          // For the third viewer, check the dropdown selection
-          const baseline = document.getElementById('comparisonBaselineSelection').value;
-          modelViewer3.setAttribute('src', `resources/comparison/${baseline}/${name}.glb`);
+          // // For the third viewer, check the dropdown selection
+          // const baseline = document.getElementById('comparisonBaselineSelection').value;
+          modelViewer3.setAttribute('src', `resources/mesh/pgsr_${name}_n10.glb`);
           
           // Reset camera positions
           [modelViewer1, modelViewer2, modelViewer3].forEach(viewer => {
@@ -565,12 +565,12 @@
         });
       });
       
-      // Handle dropdown change for the third comparison model
-      document.getElementById('comparisonBaselineSelection').addEventListener('change', function() {
-        const selectedName = document.querySelector('#thumbnail-comparison .thumbnail-selected').getAttribute('name');
-        const baseline = this.value;
-        document.getElementById('modelViewerComparison3').setAttribute('src', `resources/comparison/${baseline}/${selectedName}.glb`);
-      });
+      // // Handle dropdown change for the third comparison model
+      // document.getElementById('comparisonBaselineSelection').addEventListener('change', function() {
+      //   const selectedName = document.querySelector('#thumbnail-comparison .thumbnail-selected').getAttribute('name');
+      //   const baseline = this.value;
+      //   document.getElementById('modelViewerComparison3').setAttribute('src', `resources/comparison/${baseline}/${selectedName}.glb`);
+      // });
     });
   </script>
 
