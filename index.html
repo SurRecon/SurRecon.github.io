@@ -32,7 +32,8 @@
     gtag('config', 'G-TSQGH8Q0WV');
   </script>
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-
+  <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.6.0/webcomponents-bundle.js"></script>
+  
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -396,7 +397,7 @@
               <div class="model-label">2DGS</div>
               <model-viewer id="modelViewerComparison2"loading="eager"
                 touch-action="pan-y" environment-image="legacy"
-                src="resources/mesh/2dgs_s3_n10.glb"
+                src="./resources/mesh/2dgs_s3_n10.glb"
                 zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 1m"
                 max-camera-orbit="auto auto 10m" interaction-prompt="none" shadow-intensity="0" ar
                 style="width: 100%; height: 100%; background: #ffffff;">
@@ -412,7 +413,7 @@
               <div class="model-label">PGSR</div>
               <model-viewer id="modelViewerComparison3" loading="eager"
                 touch-action="pan-y" environment-image="legacy"
-                src="resources/mesh/pgsr_s3_n10.glb"
+                src="./resources/mesh/pgsr_s3_n10.glb"
                 zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 1m"
                 max-camera-orbit="auto auto 10m" interaction-prompt="none" shadow-intensity="0" ar
                 style="width: 100%; height: 100%; background: #ffffff;">
@@ -422,7 +423,7 @@
           <div class="hero-body" style="padding: 0;">
             <div class="content has-text-centered">
               <div class="thumbnail-container", id="thumbnail-comparison", data-selected-name="Colosseum">                
-                <img src="resources/assets/s3.png" name="s3">
+                <img src="./resources/assets/s3.png" name="s3">
                 <!-- <img src="resources/comparison/assets/oil.png" name="oil">
                 <video src="resources/comparison/assets/fern.mp4" name="fern" loop playsinline muted></video>
                 <video src="resources/comparison/assets/pyramid.mp4" name="pyramid" loop playsinline muted></video> -->
@@ -519,19 +520,20 @@
       
       document.querySelectorAll('#thumbnail-comparison img, #thumbnail-comparison video').forEach(el => {
         el.addEventListener('click', () => {
-          const name = el.getAttribute('name');
+          // const name = el.getAttribute('name');
+          const name='s3';
           
           // Update model viewers with the corresponding GLB files
           const modelViewer1 = document.getElementById('modelViewerComparison1');
           const modelViewer2 = document.getElementById('modelViewerComparison2');
           const modelViewer3 = document.getElementById('modelViewerComparison3');
           
-          modelViewer1.setAttribute('src', `resources/mesh/surrecon_${name}_n10.glb`);
-          modelViewer2.setAttribute('src', `resources/mesh/2dgs_${name}_n10.glb`);
+          modelViewer1.setAttribute('src', `./resources/mesh/surrecon_${name}_n10.glb`);
+          modelViewer2.setAttribute('src', `./resources/mesh/2dgs_${name}_n10.glb`);
           
           // // For the third viewer, check the dropdown selection
           // const baseline = document.getElementById('comparisonBaselineSelection').value;
-          modelViewer3.setAttribute('src', `resources/mesh/pgsr_${name}_n10.glb`);
+          modelViewer3.setAttribute('src', `./resources/mesh/pgsr_${name}_n10.glb`);
           
           // Reset camera positions
           [modelViewer1, modelViewer2, modelViewer3].forEach(viewer => {
