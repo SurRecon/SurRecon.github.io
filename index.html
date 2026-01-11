@@ -281,25 +281,39 @@
 
           <br>
 
-          <h2 class="title is-4">Video Comparisons</h2>
+          <h2 class="title is-4">Rendering Comparisons</h2>
           <div class="content has-text-justified" style="align-self: flex-start;">
-            <p>Click a baseline option (3DGS, 2DGS, or PGSR) to switch the right-side video.</p>
+            <p>
+            The left images show the rendered RGB views, while the right images display the corresponding rendered depth maps.
+            Click a baseline option (3DGS, 2DGS, or PGSR) to switch the right-side video.
+            Overall, SurRecon consistently achieves superior visual quality in both RGB and depth renderings, producing clearer RGB views without noticeable artifacts and smoother, more coherent depth maps compared to existing methods.
+            </p>
           </div>
 
           <!-- Per-row baseline toggle buttons are provided next to each right-side video -->
+          <style>
+            /* Symmetric header bar for both left and right columns */
+            .video-card .video-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 0.5rem;
+            }
+          </style>
 
           <div class="box video-compare-panel">
             <!-- Row 1: KF1 -->
             <div class="columns is-vcentered is-variable is-2">
               <div class="column">
                 <div class="video-card">
-                  <div class="video-label">SurRecon</div>
+                  <div class="video-header"><div class="video-label">SurRecon</div></div>
                   <video class="comparison-video" src="./video/surrecon_kf1_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
               </div>
               <div class="column">
                 <div class="video-card">
-                  <div class="video-label baseline-label">3DGS</div>
+                  <div class="video-header">
+                    <div class="video-label baseline-label">3DGS</div>
                   <div class="level is-mobile" style="margin-bottom: 0.5rem;">
                     <div class="level-right" style="width: 100%; justify-content: flex-end;">
                       <div class="buttons has-addons row-method-group" data-scene="kf1">
@@ -308,6 +322,7 @@
                         <button class="button is-small is-link is-light row-method-button" data-scene="kf1" data-method="pgsr">PGSR</button>
                       </div>
                     </div>
+                  </div>
                   </div>
                   <video class="comparison-video baseline-video" data-scene="kf1" src="./video/3dgs_colmap_kf1_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
@@ -318,13 +333,14 @@
             <div class="columns is-vcentered is-variable is-2">
               <div class="column">
                 <div class="video-card">
-                  <div class="video-label">SurRecon</div>
+                  <div class="video-header"><div class="video-label">SurRecon</div></div>
                   <video class="comparison-video" src="./video/surrecon_kf8_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
               </div>
               <div class="column">
                 <div class="video-card">
-                  <div class="video-label baseline-label">3DGS</div>
+                  <div class="video-header">
+                    <div class="video-label baseline-label">3DGS</div>
                   <div class="level is-mobile" style="margin-bottom: 0.5rem;">
                     <div class="level-right" style="width: 100%; justify-content: flex-end;">
                       <div class="buttons has-addons row-method-group" data-scene="kf8">
@@ -333,6 +349,7 @@
                         <button class="button is-small is-link is-light row-method-button" data-scene="kf8" data-method="pgsr">PGSR</button>
                       </div>
                     </div>
+                  </div>
                   </div>
                   <video class="comparison-video baseline-video" data-scene="kf8" src="./video/3dgs_colmap_kf8_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
@@ -343,13 +360,14 @@
             <div class="columns is-vcentered is-variable is-2">
               <div class="column">
                 <div class="video-card">
-                  <div class="video-label">SurRecon</div>
+                  <div class="video-header"><div class="video-label">SurRecon</div></div>
                   <video class="comparison-video" src="./video/surrecon_kf9_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
               </div>
               <div class="column">
                 <div class="video-card">
-                  <div class="video-label baseline-label">3DGS</div>
+                  <div class="video-header">
+                    <div class="video-label baseline-label">3DGS</div>
                   <div class="level is-mobile" style="margin-bottom: 0.5rem;">
                     <div class="level-right" style="width: 100%; justify-content: flex-end;">
                       <div class="buttons has-addons row-method-group" data-scene="kf9">
@@ -359,6 +377,7 @@
                       </div>
                     </div>
                   </div>
+                  </div>
                   <video class="comparison-video baseline-video" data-scene="kf9" src="./video/3dgs_colmap_kf9_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
               </div>
@@ -367,7 +386,7 @@
 
           <br>
 
-          <h2 class="title is-4">Qualitative Comparison</h2>
+          <h2 class="title is-4">Mesh Comparisons</h2>
           <div class="content has-text-justified" style="align-self: flex-start;">
             <p>
                SurRecon significantly outperforms all other methods across various tasks. Please refer to our paper for quantitative results. Here we also provide a qualitative comparison with 2DGS and PGSR.
