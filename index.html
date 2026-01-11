@@ -286,15 +286,7 @@
             <p>Click a baseline option (3DGS, 2DGS, or PGSR) to switch the right-side video.</p>
           </div>
 
-          <div class="level is-mobile" style="margin-bottom: 0.75rem;">
-            <div class="level-right" style="width: 100%; justify-content: flex-end;">
-              <div class="buttons has-addons">
-                <button class="button is-small is-link is-light video-baseline-button is-active" data-method="3dgs">3DGS</button>
-                <button class="button is-small is-link is-light video-baseline-button" data-method="2dgs">2DGS</button>
-                <button class="button is-small is-link is-light video-baseline-button" data-method="pgsr">PGSR</button>
-              </div>
-            </div>
-          </div>
+          <!-- Per-row baseline toggle buttons are provided next to each right-side video -->
 
           <div class="box video-compare-panel">
             <!-- Row 1: KF1 -->
@@ -308,6 +300,11 @@
               <div class="column">
                 <div class="video-card">
                   <div class="video-label baseline-label">3DGS</div>
+                  <div class="level is-mobile" style="margin-bottom: 0.5rem;">
+                    <div class="level-right" style="width: 100%; justify-content: flex-end;">
+                      <button class="button is-small is-link is-light row-baseline-toggle" data-scene="kf1">切换基线</button>
+                    </div>
+                  </div>
                   <video class="comparison-video baseline-video" data-scene="kf1" src="./video/3dgs_colmap_kf1_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
               </div>
@@ -324,6 +321,11 @@
               <div class="column">
                 <div class="video-card">
                   <div class="video-label baseline-label">3DGS</div>
+                  <div class="level is-mobile" style="margin-bottom: 0.5rem;">
+                    <div class="level-right" style="width: 100%; justify-content: flex-end;">
+                      <button class="button is-small is-link is-light row-baseline-toggle" data-scene="kf8">切换基线</button>
+                    </div>
+                  </div>
                   <video class="comparison-video baseline-video" data-scene="kf8" src="./video/3dgs_colmap_kf8_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
               </div>
@@ -340,6 +342,11 @@
               <div class="column">
                 <div class="video-card">
                   <div class="video-label baseline-label">3DGS</div>
+                  <div class="level is-mobile" style="margin-bottom: 0.5rem;">
+                    <div class="level-right" style="width: 100%; justify-content: flex-end;">
+                      <button class="button is-small is-link is-light row-baseline-toggle" data-scene="kf9">切换基线</button>
+                    </div>
+                  </div>
                   <video class="comparison-video baseline-video" data-scene="kf9" src="./video/3dgs_colmap_kf9_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
               </div>
@@ -367,7 +374,7 @@
               <div class="model-label">SurRecon</div>
               <model-viewer id="modelViewerComparison1" loading="lazy"
                 touch-action="pan-y" environment-image="legacy"
-                src="resources/mesh/surrecon_s5_n10.glb"
+                src="resources/mesh/surrecon_s3_n10.glb"
                 zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 1m"
                 max-camera-orbit="auto auto 10m" interaction-prompt="none" shadow-intensity="0" ar
                 style="width: 100%; height: 100%;  background: #ffffff;">
@@ -378,7 +385,7 @@
               <div class="model-label">2DGS</div>
               <model-viewer id="modelViewerComparison2" loading="lazy"
                 touch-action="pan-y" environment-image="legacy"
-                src="./resources/mesh/2dgs_s5_n10.glb"
+                src="./resources/mesh/2dgs_s3_n10.glb"
                 zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 1m"
                 max-camera-orbit="auto auto 10m" interaction-prompt="none" shadow-intensity="0" ar
                 style="width: 100%; height: 100%; background: #ffffff;">
@@ -394,7 +401,7 @@
               <div class="model-label">PGSR</div>
               <model-viewer id="modelViewerComparison3" loading="lazy"
                 touch-action="pan-y" environment-image="legacy"
-                src="./resources/mesh/pgsr_s5_n10.glb"
+                src="./resources/mesh/pgsr_s3_n10.glb"
                 zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 1m"
                 max-camera-orbit="auto auto 10m" interaction-prompt="none" shadow-intensity="0" ar
                 style="width: 100%; height: 100%; background: #ffffff;">
@@ -504,8 +511,7 @@
       
       document.querySelectorAll('#thumbnail-comparison img, #thumbnail-comparison video').forEach(el => {
         el.addEventListener('click', () => {
-          // const name = el.getAttribute('name');
-          const name='s3';
+          const name = el.getAttribute('name');
           
           // Update model viewers with the corresponding GLB files
           const modelViewer1 = document.getElementById('modelViewerComparison1');
@@ -558,23 +564,18 @@
       //   document.getElementById('modelViewerComparison3').setAttribute('src', `resources/comparison/${baseline}/${selectedName}.glb`);
       // });
       
-      // Baseline switching for right-side videos in each row
-      const baselineButtons = document.querySelectorAll('.video-baseline-button');
-      let activeBaseline = '3dgs';
+      // Per-row baseline switching
+      const methods = ['3dgs', '2dgs', 'pgsr'];
+      const baselineState = {};
 
-      function setActiveButtons(collection, target) {
-        collection.forEach(btn => btn.classList.toggle('is-active', btn === target));
-      }
-
-      function updateBaselineVideos() {
-        // Update label text
-        document.querySelectorAll('.baseline-label').forEach(lbl => {
-          lbl.textContent = activeBaseline.toUpperCase();
-        });
-        // Update all baseline videos per scene
-        document.querySelectorAll('.baseline-video').forEach(video => {
-          const scene = video.getAttribute('data-scene');
-          const src = `./video/${activeBaseline}_colmap_${scene}_renders_depths.mp4`;
+      function updateBaselineForScene(scene, method) {
+        // Update label text for the row
+        const label = document.querySelector(`.columns .baseline-video[data-scene="${scene}"]`)?.closest('.video-card')?.querySelector('.baseline-label');
+        if (label) label.textContent = method.toUpperCase();
+        // Update video src for the specific scene
+        const video = document.querySelector(`.baseline-video[data-scene="${scene}"]`);
+        if (video) {
+          const src = `./video/${method}_colmap_${scene}_renders_depths.mp4`;
           if (video.src !== src) {
             video.src = src;
             video.load();
@@ -583,19 +584,26 @@
           if (playPromise && playPromise.catch) {
             playPromise.catch(() => {});
           }
-        });
+        }
       }
 
-      baselineButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          activeBaseline = btn.dataset.method;
-          setActiveButtons(baselineButtons, btn);
-          updateBaselineVideos();
-        });
+      // Initialize baseline per scene
+      document.querySelectorAll('.baseline-video').forEach(video => {
+        const scene = video.getAttribute('data-scene');
+        baselineState[scene] = baselineState[scene] || '3dgs';
+        updateBaselineForScene(scene, baselineState[scene]);
       });
 
-      // Initialize to default (3DGS)
-      updateBaselineVideos();
+      // Toggle buttons per row
+      document.querySelectorAll('.row-baseline-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const scene = btn.getAttribute('data-scene');
+          const current = baselineState[scene] || '3dgs';
+          const next = methods[(methods.indexOf(current) + 1) % methods.length];
+          baselineState[scene] = next;
+          updateBaselineForScene(scene, next);
+        });
+      });
     });
   </script>
 
