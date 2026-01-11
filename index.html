@@ -286,6 +286,16 @@
             <p>Click a baseline option (3DGS, 2DGS, or PGSR) to switch the right-side video.</p>
           </div>
 
+          <div class="level is-mobile" style="margin-bottom: 0.75rem;">
+            <div class="level-right" style="width: 100%; justify-content: flex-end;">
+              <div class="buttons has-addons">
+                <button class="button is-small is-link is-light video-baseline-button is-active" data-method="3dgs">3DGS</button>
+                <button class="button is-small is-link is-light video-baseline-button" data-method="2dgs">2DGS</button>
+                <button class="button is-small is-link is-light video-baseline-button" data-method="pgsr">PGSR</button>
+              </div>
+            </div>
+          </div>
+
           <div class="box video-compare-panel">
             <!-- Row 1: KF1 -->
             <div class="columns is-vcentered is-variable is-2">
@@ -297,8 +307,8 @@
               </div>
               <div class="column">
                 <div class="video-card">
-                  <div class="video-label">3DGS</div>
-                  <video class="comparison-video" src="./video/3dgs_colmap_kf1_renders_depths.mp4" controls autoplay muted loop playsinline></video>
+                  <div class="video-label baseline-label">3DGS</div>
+                  <video class="comparison-video baseline-video" data-scene="kf1" src="./video/3dgs_colmap_kf1_renders_depths.mp4" controls autoplay muted loop playsinline></video>
                 </div>
               </div>
             </div>
@@ -313,8 +323,8 @@
               </div>
               <div class="column">
                 <div class="video-card">
-                  <div class="video-label">3DGS</div>
-                  <video class="comparison-video" src="./video/3dgs_colmap_kf8_renders_depths.mp4" controls autoplay muted loop playsinline></video>
+                  <div class="video-label baseline-label">3DGS</div>
+                  <video class="comparison-video baseline-video" data-scene="kf8" src="./video/3dgs_colmap_kf8_renders_depths.mp4" controls autoplay muted loop playsinline></video>
                 </div>
               </div>
             </div>
@@ -329,8 +339,8 @@
               </div>
               <div class="column">
                 <div class="video-card">
-                  <div class="video-label">3DGS</div>
-                  <video class="comparison-video" src="./video/3dgs_colmap_kf9_renders_depths.mp4" controls autoplay muted loop playsinline></video>
+                  <div class="video-label baseline-label">3DGS</div>
+                  <video class="comparison-video baseline-video" data-scene="kf9" src="./video/3dgs_colmap_kf9_renders_depths.mp4" controls autoplay muted loop playsinline></video>
                 </div>
               </div>
             </div>
@@ -547,6 +557,45 @@
       //   const baseline = this.value;
       //   document.getElementById('modelViewerComparison3').setAttribute('src', `resources/comparison/${baseline}/${selectedName}.glb`);
       // });
+      
+      // Baseline switching for right-side videos in each row
+      const baselineButtons = document.querySelectorAll('.video-baseline-button');
+      let activeBaseline = '3dgs';
+
+      function setActiveButtons(collection, target) {
+        collection.forEach(btn => btn.classList.toggle('is-active', btn === target));
+      }
+
+      function updateBaselineVideos() {
+        // Update label text
+        document.querySelectorAll('.baseline-label').forEach(lbl => {
+          lbl.textContent = activeBaseline.toUpperCase();
+        });
+        // Update all baseline videos per scene
+        document.querySelectorAll('.baseline-video').forEach(video => {
+          const scene = video.getAttribute('data-scene');
+          const src = `./video/${activeBaseline}_colmap_${scene}_renders_depths.mp4`;
+          if (video.src !== src) {
+            video.src = src;
+            video.load();
+          }
+          const playPromise = video.play();
+          if (playPromise && playPromise.catch) {
+            playPromise.catch(() => {});
+          }
+        });
+      }
+
+      baselineButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeBaseline = btn.dataset.method;
+          setActiveButtons(baselineButtons, btn);
+          updateBaselineVideos();
+        });
+      });
+
+      // Initialize to default (3DGS)
+      updateBaselineVideos();
     });
   </script>
 
