@@ -375,45 +375,66 @@
           <h2 class="title is-4" style="font-weight: 700;">Video Comparisons</h2>
           <div class="content has-text-justified" style="align-self: flex-start;">
             <p>
-              选择场景并切换右侧的基线方法，左侧始终展示 SurRecon。所有对比视频均来自 video 文件夹，默认展示 3DGS。
+              Click a baseline option (3DGS, 2DGS, or PGSR) to switch the right-side video.
             </p>
           </div>
 
           <div class="box video-compare-panel">
-            <div class="level is-mobile">
-              <div class="level-left">
-                <div class="level-item"><span class="tag is-dark is-medium">Scene</span></div>
-                <div class="level-item">
-                  <div class="buttons has-addons">
-                    <button class="button is-small is-link is-light video-scene-button is-active" data-scene="kf1">KF1</button>
-                    <button class="button is-small is-link is-light video-scene-button" data-scene="kf8">KF8</button>
-                    <button class="button is-small is-link is-light video-scene-button" data-scene="kf9">KF9</button>
+            <div class="columns is-desktop is-variable is-4">
+              <!-- KF1 Column -->
+              <div class="column">
+                <div class="scene-header">KF1</div>
+                <div class="columns is-mobile is-variable is-2">
+                  <div class="column">
+                    <div class="video-card">
+                      <div class="video-label">SurRecon</div>
+                      <video class="comparison-video" src="./video/surrecon_kf1_renders_depths.mp4" controls autoplay muted loop playsinline></video>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="video-card">
+                      <div class="video-label">3DGS</div>
+                      <video class="comparison-video" src="./video/3dgs_colmap_kf1_renders_depths.mp4" controls autoplay muted loop playsinline></video>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="level-right">
-                <div class="level-item"><span class="tag is-dark is-medium">Baseline</span></div>
-                <div class="level-item">
-                  <div class="buttons has-addons">
-                    <button class="button is-small is-link is-light video-baseline-button is-active" data-method="3dgs">3DGS</button>
-                    <button class="button is-small is-link is-light video-baseline-button" data-method="2dgs">2DGS</button>
-                    <button class="button is-small is-link is-light video-baseline-button" data-method="pgsr">PGSR</button>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="columns is-variable is-5 is-vcentered">
+              <!-- KF8 Column -->
               <div class="column">
-                <div class="video-card">
-                  <div class="video-label">SurRecon</div>
-                  <video id="video-surrecon" class="comparison-video" controls autoplay muted loop playsinline></video>
+                <div class="scene-header">KF8</div>
+                <div class="columns is-mobile is-variable is-2">
+                  <div class="column">
+                    <div class="video-card">
+                      <div class="video-label">SurRecon</div>
+                      <video class="comparison-video" src="./video/surrecon_kf8_renders_depths.mp4" controls autoplay muted loop playsinline></video>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="video-card">
+                      <div class="video-label">3DGS</div>
+                      <video class="comparison-video" src="./video/3dgs_colmap_kf8_renders_depths.mp4" controls autoplay muted loop playsinline></video>
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              <!-- KF9 Column -->
               <div class="column">
-                <div class="video-card">
-                  <div class="video-label" id="video-baseline-label">3DGS</div>
-                  <video id="video-baseline" class="comparison-video" controls autoplay muted loop playsinline></video>
+                <div class="scene-header">KF9</div>
+                <div class="columns is-mobile is-variable is-2">
+                  <div class="column">
+                    <div class="video-card">
+                      <div class="video-label">SurRecon</div>
+                      <video class="comparison-video" src="./video/surrecon_kf9_renders_depths.mp4" controls autoplay muted loop playsinline></video>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="video-card">
+                      <div class="video-label">3DGS</div>
+                      <video class="comparison-video" src="./video/3dgs_colmap_kf9_renders_depths.mp4" controls autoplay muted loop playsinline></video>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -424,9 +445,16 @@
               background: linear-gradient(135deg, #f8fafc, #eef2ff);
               border: 1px solid #dbeafe;
               box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+              padding: 1rem 1rem;
+            }
+            .scene-header {
+              font-weight: 600;
+              margin-bottom: 0.5rem;
+              color: #334155;
             }
             .comparison-video {
               width: 100%;
+              height: 240px; /* bigger height for better visibility */
               border-radius: 8px;
               background: #0f172a;
             }
@@ -450,10 +478,7 @@
               letter-spacing: 0.02em;
             }
             @media (max-width: 768px) {
-              .video-label {
-                top: 8px;
-                left: 8px;
-              }
+              .comparison-video { height: 180px; }
             }
           </style>
 
@@ -562,65 +587,7 @@
   </section> -->
 
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const sceneButtons = document.querySelectorAll('.video-scene-button');
-      const baselineButtons = document.querySelectorAll('.video-baseline-button');
-      const surVideo = document.getElementById('video-surrecon');
-      const baselineVideo = document.getElementById('video-baseline');
-      const baselineLabel = document.getElementById('video-baseline-label');
-
-      if (!surVideo || !baselineVideo || !baselineLabel) {
-        return;
-      }
-
-      const sources = {
-        surrecon: scene => `./video/surrecon_${scene}_renders_depths.mp4`,
-        '3dgs': scene => `./video/3dgs_colmap_${scene}_renders_depths.mp4`,
-        '2dgs': scene => `./video/2dgs_colmap_${scene}_renders_depths.mp4`,
-        'pgsr': scene => `./video/pgsr_colmap_${scene}_renders_depths.mp4`
-      };
-
-      let activeScene = 'kf1';
-      let activeBaseline = '3dgs';
-
-      function setActiveButtons(collection, target) {
-        collection.forEach(btn => btn.classList.toggle('is-active', btn === target));
-      }
-
-      function updateVideos() {
-        surVideo.src = sources.surrecon(activeScene);
-        baselineVideo.src = sources[activeBaseline](activeScene);
-        baselineLabel.textContent = activeBaseline.toUpperCase();
-
-        [surVideo, baselineVideo].forEach(video => {
-          video.load();
-          const playPromise = video.play();
-          if (playPromise && playPromise.catch) {
-            playPromise.catch(() => {});
-          }
-        });
-      }
-
-      sceneButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          activeScene = btn.dataset.scene;
-          setActiveButtons(sceneButtons, btn);
-          updateVideos();
-        });
-      });
-
-      baselineButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          activeBaseline = btn.dataset.method;
-          setActiveButtons(baselineButtons, btn);
-          updateVideos();
-        });
-      });
-
-      updateVideos();
-    });
-  </script>
+  
 
 
   <footer class="footer">
