@@ -302,7 +302,11 @@
                   <div class="video-label baseline-label">3DGS</div>
                   <div class="level is-mobile" style="margin-bottom: 0.5rem;">
                     <div class="level-right" style="width: 100%; justify-content: flex-end;">
-                      <button class="button is-small is-link is-light row-baseline-toggle" data-scene="kf1">切换基线</button>
+                      <div class="buttons has-addons row-method-group" data-scene="kf1">
+                        <button class="button is-small is-link is-light row-method-button is-active" data-scene="kf1" data-method="3dgs">3DGS</button>
+                        <button class="button is-small is-link is-light row-method-button" data-scene="kf1" data-method="2dgs">2DGS</button>
+                        <button class="button is-small is-link is-light row-method-button" data-scene="kf1" data-method="pgsr">PGSR</button>
+                      </div>
                     </div>
                   </div>
                   <video class="comparison-video baseline-video" data-scene="kf1" src="./video/3dgs_colmap_kf1_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
@@ -323,7 +327,11 @@
                   <div class="video-label baseline-label">3DGS</div>
                   <div class="level is-mobile" style="margin-bottom: 0.5rem;">
                     <div class="level-right" style="width: 100%; justify-content: flex-end;">
-                      <button class="button is-small is-link is-light row-baseline-toggle" data-scene="kf8">切换基线</button>
+                      <div class="buttons has-addons row-method-group" data-scene="kf8">
+                        <button class="button is-small is-link is-light row-method-button is-active" data-scene="kf8" data-method="3dgs">3DGS</button>
+                        <button class="button is-small is-link is-light row-method-button" data-scene="kf8" data-method="2dgs">2DGS</button>
+                        <button class="button is-small is-link is-light row-method-button" data-scene="kf8" data-method="pgsr">PGSR</button>
+                      </div>
                     </div>
                   </div>
                   <video class="comparison-video baseline-video" data-scene="kf8" src="./video/3dgs_colmap_kf8_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
@@ -344,7 +352,11 @@
                   <div class="video-label baseline-label">3DGS</div>
                   <div class="level is-mobile" style="margin-bottom: 0.5rem;">
                     <div class="level-right" style="width: 100%; justify-content: flex-end;">
-                      <button class="button is-small is-link is-light row-baseline-toggle" data-scene="kf9">切换基线</button>
+                      <div class="buttons has-addons row-method-group" data-scene="kf9">
+                        <button class="button is-small is-link is-light row-method-button is-active" data-scene="kf9" data-method="3dgs">3DGS</button>
+                        <button class="button is-small is-link is-light row-method-button" data-scene="kf9" data-method="2dgs">2DGS</button>
+                        <button class="button is-small is-link is-light row-method-button" data-scene="kf9" data-method="pgsr">PGSR</button>
+                      </div>
                     </div>
                   </div>
                   <video class="comparison-video baseline-video" data-scene="kf9" src="./video/3dgs_colmap_kf9_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
@@ -594,15 +606,29 @@
         updateBaselineForScene(scene, baselineState[scene]);
       });
 
-      // Toggle buttons per row
-      document.querySelectorAll('.row-baseline-toggle').forEach(btn => {
+      // Helper to set active state for per-row buttons
+      function setActiveRowButtons(scene, method) {
+        const group = document.querySelector(`.row-method-group[data-scene="${scene}"]`);
+        if (!group) return;
+        group.querySelectorAll('.row-method-button').forEach(b => {
+          b.classList.toggle('is-active', b.getAttribute('data-method') === method);
+        });
+      }
+
+      // Per-row method buttons
+      document.querySelectorAll('.row-method-button').forEach(btn => {
         btn.addEventListener('click', () => {
           const scene = btn.getAttribute('data-scene');
-          const current = baselineState[scene] || '3dgs';
-          const next = methods[(methods.indexOf(current) + 1) % methods.length];
-          baselineState[scene] = next;
-          updateBaselineForScene(scene, next);
+          const method = btn.getAttribute('data-method');
+          baselineState[scene] = method;
+          updateBaselineForScene(scene, method);
+          setActiveRowButtons(scene, method);
         });
+      });
+
+      // Sync button active state on init
+      Object.entries(baselineState).forEach(([scene, method]) => {
+        setActiveRowButtons(scene, method);
       });
     });
   </script>
