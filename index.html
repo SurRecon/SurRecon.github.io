@@ -57,7 +57,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-4 publication-title" style="font-size: 2rem;">SurRecon: Holistic Surgical Scene Reconstruction from Sparse Views via Surface-Aware Gaussian Splatting</h1>
+            <h1 class="title is-4 publication-title">SurRecon: Holistic Surgical Scene Reconstruction from Sparse Views via Surface-Aware Gaussian Splatting</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 Yuchao Zheng<sup>1</sup>,
@@ -143,39 +143,9 @@
   </section>
 
 
-  <style>
-    .video-border {
-      display: inline-block;
-      padding: 2px; /* adjust thickness of your 'border' */
-      border-radius: 4px;
-      background: linear-gradient(45deg, #ff9a9e, #fad0c4); /* try different gradient colors */
-    }
-    .video-border video {
-      display: block;
-      border: none;
-      border-radius: 4px; /* match the wrapper for a consistent look */
-    }
-  </style>
+  
 
   <style>
-    #teaser-video {
-      max-width: 85%;
-      margin: 0 auto;
-      display: block;
-      border: none; /* remove the solid border */
-      border-radius: 4px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    }
-    
-    #architecture-img {
-      width: 90%;
-      margin: 0 auto;
-      display: block;
-      border: none;
-      border-radius: 0; /* removed border radius */
-      box-shadow: none; /* removed box shadow */
-    }
-    
     /* Enhanced style to further reduce space between buttons and teaser video */
     .hero.teaser {
       padding-top: 0;
@@ -204,7 +174,7 @@
         <div class="column is-full-width has-text-centered">
 
 
-          <h2 class="title is-4" style="font-weight: 700;">Abstract</h2>
+          <h2 class="title is-4">Abstract</h2>
           <div class="content has-text-justified">
             <p>
               we present <b>SurRecon</b>, a sparse-view surgical reconstruction framework that eliminates SfM dependence, enabling holistic and high-fidelity mesh recovery using fewer than 10 RGB images. Leveraging a 3D foundation model for initial poses and point clouds, SurRecon refines geometry through a Neural Feature Guided Alignment module, enforcing cross-view feature consistency. To enhance surface continuity under sparse supervision, we integrate surface-aware constraints and geometric regularization. Experiments on the SCARED and Hamlyn datasets demonstrate state-of-the-art performance in terms of novel view synthesis, pose estimation, geometric accuracy, and surface completeness, advancing practical 3D reconstruction for minimally invasive surgery.
@@ -213,7 +183,7 @@
           <br>
 
 
-          <h2 class="title is-4" style="font-weight: 700;">Method</h2>
+          <h2 class="title is-4">Method</h2>
           <div class="content has-text-justified">
             <p>
               Given sparse-view endoscopic images, we first estimate initial camera poses (<b>T</b><sub>init</sub>) and coarse geometry (<b>P</b><sub>init</sub>) using a 3D foundation model (GeoNet). Then, we introduce the NeuroAlign module to refine the scene and obtain the optimized geometry jointly based on confidence maps {<b>C</b><sub>k</sub>}. During Gaussian optimization, surface-aware (<i>L</i><sub>norm</sub>) and cross-view regularization (<i>L</i><sub>cross</sub>) jointly enforce local geometry and global consistency, enabling robust reconstruction under sparse intraoperative settings.
@@ -257,68 +227,7 @@
               <img src="resources/qualitative/indoor.jpg" data-glb="resources/qualitative/indoor_v2.glb">
             </div>  
           </div> -->
-          <style>
-            .thumbnail-container img, .thumbnail-container video {
-              transition: all 0.3s ease;
-              border: 3px solid transparent;
-              cursor: pointer;
-            }
-            .thumbnail-selected {
-              transform: scale(1.2);
-              border: 6px solid #79b4f2 !important; 
-              box-shadow: 0 0 10px rgba(121, 180, 242, 0.5);
-              z-index: 10;
-              position: relative;
-            }
-            
-            /* New styles for responsive horizontal gallery */
-            .thumbnail-container {
-              display: flex;
-              flex-wrap: nowrap;
-              overflow-x: auto;
-              gap: 10px;
-              padding: 10px 0;
-              -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-              scrollbar-width: thin;
-              align-items: center;
-            }
-            
-            .thumbnail-container img, 
-            .thumbnail-container video {
-              flex: 0 0 auto;
-              width: auto;
-              height: 120px; /* Consistent height */
-              object-fit: cover;
-              max-width: none;
-            }
-            
-            /* Custom scrollbar styling */
-            .thumbnail-container::-webkit-scrollbar {
-              height: 6px;
-            }
-            
-            .thumbnail-container::-webkit-scrollbar-track {
-              background: #f1f1f1;
-              border-radius: 10px;
-            }
-            
-            .thumbnail-container::-webkit-scrollbar-thumb {
-              background: #888;
-              border-radius: 10px;
-            }
-            
-            .thumbnail-container::-webkit-scrollbar-thumb:hover {
-              background: #555;
-            }
-            
-            /* Adjust for smaller screens */
-            @media (max-width: 768px) {
-              .thumbnail-container img,
-              .thumbnail-container video {
-                height: 100px;
-              }
-            }
-          </style>
+          
           <script>
             // The problem is here - you're trying to select an element that doesn't exist
             // document.querySelector('#thumbnail-qualitative img[src="resources/qualitative/college.png"]').classList.add('thumbnail-selected');
@@ -372,7 +281,7 @@
 
           <br>
 
-          <h2 class="title is-4" style="font-weight: 700;">Video Comparisons</h2>
+          <h2 class="title is-4">Video Comparisons</h2>
           <div class="content has-text-justified" style="align-self: flex-start;">
             <p>
               Click a baseline option (3DGS, 2DGS, or PGSR) to switch the right-side video.
@@ -380,111 +289,60 @@
           </div>
 
           <div class="box video-compare-panel">
-            <div class="columns is-desktop is-variable is-4">
-              <!-- KF1 Column -->
+            <!-- Row: KF1 -->
+            <div class="columns is-variable is-2 is-vcentered">
               <div class="column">
-                <div class="scene-header">KF1</div>
-                <div class="columns is-mobile is-variable is-2">
-                  <div class="column">
-                    <div class="video-card">
-                      <div class="video-label">SurRecon</div>
-                      <video class="comparison-video" src="./video/surrecon_kf1_renders_depths.mp4" controls autoplay muted loop playsinline></video>
-                    </div>
-                  </div>
-                  <div class="column">
-                    <div class="video-card">
-                      <div class="video-label">3DGS</div>
-                      <video class="comparison-video" src="./video/3dgs_colmap_kf1_renders_depths.mp4" controls autoplay muted loop playsinline></video>
-                    </div>
-                  </div>
+                <div class="video-card">
+                  <div class="video-label">SurRecon</div>
+                  <video class="comparison-video" src="./video/surrecon_kf1_renders_depths.mp4" controls autoplay muted loop playsinline></video>
                 </div>
               </div>
-
-              <!-- KF8 Column -->
               <div class="column">
-                <div class="scene-header">KF8</div>
-                <div class="columns is-mobile is-variable is-2">
-                  <div class="column">
-                    <div class="video-card">
-                      <div class="video-label">SurRecon</div>
-                      <video class="comparison-video" src="./video/surrecon_kf8_renders_depths.mp4" controls autoplay muted loop playsinline></video>
-                    </div>
-                  </div>
-                  <div class="column">
-                    <div class="video-card">
-                      <div class="video-label">3DGS</div>
-                      <video class="comparison-video" src="./video/3dgs_colmap_kf8_renders_depths.mp4" controls autoplay muted loop playsinline></video>
-                    </div>
-                  </div>
+                <div class="video-card">
+                  <div class="video-label">3DGS</div>
+                  <video class="comparison-video" src="./video/3dgs_colmap_kf1_renders_depths.mp4" controls autoplay muted loop playsinline></video>
                 </div>
               </div>
+            </div>
 
-              <!-- KF9 Column -->
+            <!-- Row: KF8 -->
+            <div class="columns is-variable is-2 is-vcentered">
               <div class="column">
-                <div class="scene-header">KF9</div>
-                <div class="columns is-mobile is-variable is-2">
-                  <div class="column">
-                    <div class="video-card">
-                      <div class="video-label">SurRecon</div>
-                      <video class="comparison-video" src="./video/surrecon_kf9_renders_depths.mp4" controls autoplay muted loop playsinline></video>
-                    </div>
-                  </div>
-                  <div class="column">
-                    <div class="video-card">
-                      <div class="video-label">3DGS</div>
-                      <video class="comparison-video" src="./video/3dgs_colmap_kf9_renders_depths.mp4" controls autoplay muted loop playsinline></video>
-                    </div>
-                  </div>
+                <div class="video-card">
+                  <div class="video-label">SurRecon</div>
+                  <video class="comparison-video" src="./video/surrecon_kf8_renders_depths.mp4" controls autoplay muted loop playsinline></video>
+                </div>
+              </div>
+              <div class="column">
+                <div class="video-card">
+                  <div class="video-label">3DGS</div>
+                  <video class="comparison-video" src="./video/3dgs_colmap_kf8_renders_depths.mp4" controls autoplay muted loop playsinline></video>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row: KF9 -->
+            <div class="columns is-variable is-2 is-vcentered">
+              <div class="column">
+                <div class="video-card">
+                  <div class="video-label">SurRecon</div>
+                  <video class="comparison-video" src="./video/surrecon_kf9_renders_depths.mp4" controls autoplay muted loop playsinline></video>
+                </div>
+              </div>
+              <div class="column">
+                <div class="video-card">
+                  <div class="video-label">3DGS</div>
+                  <video class="comparison-video" src="./video/3dgs_colmap_kf9_renders_depths.mp4" controls autoplay muted loop playsinline></video>
                 </div>
               </div>
             </div>
           </div>
 
-          <style>
-            .video-compare-panel {
-              background: linear-gradient(135deg, #f8fafc, #eef2ff);
-              border: 1px solid #dbeafe;
-              box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-              padding: 1rem 1rem;
-            }
-            .scene-header {
-              font-weight: 600;
-              margin-bottom: 0.5rem;
-              color: #334155;
-            }
-            .comparison-video {
-              width: 100%;
-              height: 240px; /* bigger height for better visibility */
-              border-radius: 8px;
-              background: #0f172a;
-            }
-            .video-card {
-              position: relative;
-              padding: 0.5rem;
-              border: 1px solid #e5e7eb;
-              border-radius: 10px;
-              background: #ffffff;
-              box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-            }
-            .video-label {
-              position: absolute;
-              top: 10px;
-              left: 10px;
-              padding: 4px 10px;
-              border-radius: 999px;
-              background: rgba(31, 41, 55, 0.9);
-              color: #f8fafc;
-              font-size: 0.8rem;
-              letter-spacing: 0.02em;
-            }
-            @media (max-width: 768px) {
-              .comparison-video { height: 180px; }
-            }
-          </style>
+          
 
           <br>
 
-          <h2 class="title is-4" style="font-weight: 700;">Qualitative Comparison</h2>
+          <h2 class="title is-4">Qualitative Comparison</h2>
           <div class="content has-text-justified" style="align-self: flex-start;">
             <p>
                SurRecon significantly outperforms all other methods across various tasks. Please refer to our paper for quantitative results. Here we also provide a qualitative comparison with 2DGS and PGSR.
