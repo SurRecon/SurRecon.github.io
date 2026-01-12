@@ -18,36 +18,15 @@
     content="We propose SurRecon, a sparse-view surgical reconstruction framework that eliminates SfM dependence, enabling holistic and high-fidelity mesh recovery using fewer than 10 RGB images." />
   <!-- <meta property="twitter:image"         content="https://3dmagicpony.github.io/resources/overview.jpg" /> -->
 
-  <!-- MathJax library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
-
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TSQGH8Q0WV"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-TSQGH8Q0WV');
-  </script>
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-  <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.6.0/webcomponents-bundle.js"></script>
-
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
 </head>
 
 <body>
@@ -89,32 +68,7 @@
 
 
             <div class="column has-text-centered">
-              <!-- <div class="publication-links">
-                PDF Link.
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/2503.11651" class="external-link button is-normal is-rounded is-dark">
-                  <span class="button is-normal is-rounded is-dark" style="cursor: default;"></span>
-                    <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                    </span>
-                    <span>Paper (Coming Soon)</span>
-                  </a>
-                </span>
-                Code Link.
-                <span class="link-block">
-                  <a href="https://github.com/facebookresearch/vggt"
-                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="button is-normal is-rounded is-dark" style="cursor: default;"></span>
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code (Coming Soon)</span>
-                  </a>
-                </span>
-              </div> -->
-
               <div class="publication-links">
-                <!-- PDF Link (Coming Soon) -->
                 <span class="link-block">
                   <span class="button is-normal is-rounded is-dark" style="cursor: default;">
                     <span class="icon">
@@ -124,7 +78,6 @@
                   </span>
                 </span>
 
-                <!-- Code Link (Coming Soon) -->
                 <span class="link-block">
                   <span class="button is-normal is-rounded is-dark" style="cursor: default;">
                     <span class="icon">
@@ -134,38 +87,12 @@
                   </span>
                 </span>
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-
-  
-
-  <style>
-    /* Enhanced style to further reduce space between buttons and teaser video */
-    .hero.teaser {
-      padding-top: 0;
-      margin-top: -3rem; /* Added negative margin to pull the teaser section up */
-    }
-    .hero.teaser .hero-body {
-      padding-top: 0; /* Reduced from 1rem to 0 */
-    }
-  </style>
-  <!-- <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <video id="teaser-video" autoplay muted loop playsinline height="100%">
-          <source src="./resources/teaser_video_v3_compressed_short.mp4" type="video/mp4">
-        </video>
-        <h2 class="subtitle" style="text-align: center;"></h2>
-      </div>
-    </div>
-  </section> -->
-
 
   <section class="section" style="padding-top: 1rem;">
     <div class="container is-max-desktop">
@@ -190,143 +117,33 @@
             </p>
           </div>
           <div class="content has-text-centered">
-            <!-- <img id="teaser" src="https://placehold.co/600x400" alt="Teaser image" style="width: 100%;"> -->
             <img id="architecture-img" src="./resources/figures/intro_pipeline_3.png" alt="Architecture">
           </div>
-          <!-- <br> -->
-
-
-          <!-- <h2 class="title is-4" style="font-weight: 700;">Qualitative Visualization</h2> -->
-          <!-- <div class="content has-text-centered">
-            <p>
-              Reconstruction of In-the-wild Photos/Videos with VGGT. Click on any thumbnail below to view the 3D reconstruction.
-            </p>
-          </div> -->
-          <!-- <div class="model-viewer-container">
-            <model-viewer id="QualitativeResult"
-                          src="resources/qualitative/colosseum_v4.glb"
-                          alt="3D Model"
-                          loading="eager"
-                          touch-action="pan-y" environment-image="legacy"
-                          camera-orbit="180deg 70deg auto" 
-                          zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 1m"
-                          max-camera-orbit="auto auto 10m" interaction-prompt="none" shadow-intensity="0" ar
-                          disable-shadow ar-modes="webxr scene-viewer quick-look"
-                          style="width: 90%; height: 90%; background: #ffffff; margin: 0 auto;">
-            </model-viewer>
-          </div> -->
-          <!-- <br> -->
-          <!-- <div class="content has-text-centered">
-            <div class="thumbnail-container" id="thumbnail-qualitative">
-              <img src="resources/qualitative/college.png" data-glb="resources/qualitative/college_v2.glb">
-              <video src="resources/qualitative/pyramid.mp4" data-glb="resources/qualitative/pyramid.glb" loop playsinline muted></video>
-              <video src="resources/qualitative/colosseum.mp4" data-glb="resources/qualitative/colosseum_v4.glb" loop playsinline muted></video>
-              <video src="resources/qualitative/outdoor_room.mp4" data-glb="resources/qualitative/outdoor_room_v2.glb" loop playsinline muted></video>
-              <video src="resources/qualitative/courtroom.mp4" data-glb="resources/qualitative/courtroom_v2.glb" loop playsinline muted></video>
-              <img src="resources/qualitative/chess.jpg" data-glb="resources/qualitative/chess_v2.glb">
-              <img src="resources/qualitative/indoor.jpg" data-glb="resources/qualitative/indoor_v2.glb">
-            </div>  
-          </div> -->
-          
-          <script>
-            // The problem is here - you're trying to select an element that doesn't exist
-            // document.querySelector('#thumbnail-qualitative img[src="resources/qualitative/college.png"]').classList.add('thumbnail-selected');
-            
-            // Instead, select the first element that actually exists in your thumbnail container
-            document.addEventListener('DOMContentLoaded', function() {
-              // Select the first element in the thumbnail container (video or image)
-              const firstThumbnail = document.querySelector('#thumbnail-qualitative video, #thumbnail-qualitative img');
-              if (firstThumbnail) {
-                firstThumbnail.classList.add('thumbnail-selected');
-                // If it's a video, play it
-                if (firstThumbnail.tagName.toLowerCase() === 'video') {
-                  firstThumbnail.play();
-                }
-              }
-              
-              document.querySelectorAll('#thumbnail-qualitative img, #thumbnail-qualitative video').forEach(el => {
-                // Rest of your click handler code remains the same
-                el.addEventListener('click', () => {
-                  const glbSrc = el.getAttribute('data-glb');
-                  const modelViewer = document.getElementById('QualitativeResult');
-                  modelViewer.setAttribute('src', glbSrc);
-                  modelViewer.cameraOrbit = "180deg 70deg auto";
-                  modelViewer.resetTurntableRotation(0);
-                  modelViewer.jumpCameraToGoal();
-
-                  // Remove selection class from all elements
-                  document.querySelectorAll('#thumbnail-qualitative img, #thumbnail-qualitative video').forEach(element => {
-                      element.classList.remove('thumbnail-selected');
-                  });
-                  
-                  // Add selection class to clicked element
-                  el.classList.add('thumbnail-selected');
-                  
-                  // Play video if it's a video element
-                  if (el.tagName.toLowerCase() === 'video') {
-                      el.play();
-                  }
-                  
-                  // Pause all other videos
-                  document.querySelectorAll('#thumbnail-qualitative video').forEach(video => {
-                      if (video !== el) {
-                          video.pause();
-                          video.currentTime = 0;
-                      }
-                  });
-                });
-              });
-            });
-          </script>
 
           <br>
 
-          <h2 class="title is-4">Rendering Comparisons</h2>
-          <div class="content has-text-justified" style="align-self: flex-start;">
-            <p>
-            The left images show the rendered RGB views, while the right images display the corresponding rendered depth maps.
-            Click a baseline option (3DGS, 2DGS, or PGSR) to switch the right-side video.
-            Overall, SurRecon consistently achieves superior visual quality in both RGB and depth renderings, producing clearer RGB views without noticeable artifacts and smoother, more coherent depth maps compared to existing methods.
-            </p>
-          </div>
-
-          <!-- Per-row baseline toggle buttons are provided next to each right-side video -->
-          <style>
-            /* Symmetric header bar for both left and right columns */
-            .video-card .video-header {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              margin-bottom: 0.5rem;
-            }
-            /* Light orange background for the video comparison panel */
-            .video-compare-panel {
-              background-color: #fff3e6; /* soft orange */
-              border: 1px solid #ffd3a6;
-              box-shadow: none; /* flatter look on color background */
-            }
-            /* Orange tint for individual video cards */
-            .video-card {
-              background-color: #ffe7c2;
-              padding: 1rem;
-              border-radius: 6px;
-              border: 1px solid #ffcc99;
-            }
-          </style>
+          <div style="background-color: #fffaf5; padding: 2rem 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h2 class="title is-4">Rendering Comparisons</h2>
+            <div class="content has-text-justified" style="align-self: flex-start;">
+              <p>
+              The left images show the rendered RGB views, while the right images display the corresponding rendered depth maps.
+              Click a baseline option (3DGS, 2DGS, or PGSR) to switch the right-side video.
+              Overall, SurRecon consistently achieves superior visual quality in both RGB and depth renderings, producing clearer RGB views without noticeable artifacts and smoother, more coherent depth maps compared to existing methods.
+              </p>
+            </div>
 
           <div class="box video-compare-panel">
             <!-- Row 1: KF1 -->
             <div class="columns is-vcentered is-variable is-2">
               <div class="column">
                 <div class="video-card">
-                  <div class="video-header"><div class="video-label baseline-label">SurRecon</div><div class="buttons has-addons static-method-group"><button class="button is-small is-link is-light is-active" disabled>SurRecon</button></div></div>
+                  <div class="video-header"><div class="buttons has-addons static-method-group"><button class="button is-small is-link is-light is-active" disabled>SurRecon</button></div></div>
                   <video class="comparison-video" src="./video/surrecon_kf1_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
               </div>
               <div class="column">
                 <div class="video-card">
                   <div class="video-header">
-                    <div class="video-label baseline-label">3DGS</div>
                     <div class="buttons has-addons row-method-group" data-scene="kf1">
                       <button class="button is-small is-link is-light row-method-button is-active" data-scene="kf1" data-method="3dgs">3DGS</button>
                       <button class="button is-small is-link is-light row-method-button" data-scene="kf1" data-method="2dgs">2DGS</button>
@@ -342,14 +159,13 @@
             <div class="columns is-vcentered is-variable is-2">
               <div class="column">
                 <div class="video-card">
-                  <div class="video-header"><div class="video-label">SurRecon</div><div class="buttons has-addons static-method-group"><button class="button is-small is-link is-light is-active" disabled>SurRecon</button></div></div>
+                  <div class="video-header"><div class="buttons has-addons static-method-group"><button class="button is-small is-link is-light is-active" disabled>SurRecon</button></div></div>
                   <video class="comparison-video" src="./video/surrecon_kf8_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
               </div>
               <div class="column">
                 <div class="video-card">
                   <div class="video-header">
-                    <div class="video-label baseline-label">3DGS</div>
                     <div class="buttons has-addons row-method-group" data-scene="kf8">
                       <button class="button is-small is-link is-light row-method-button is-active" data-scene="kf8" data-method="3dgs">3DGS</button>
                       <button class="button is-small is-link is-light row-method-button" data-scene="kf8" data-method="2dgs">2DGS</button>
@@ -365,14 +181,13 @@
             <div class="columns is-vcentered is-variable is-2">
               <div class="column">
                 <div class="video-card">
-                  <div class="video-header"><div class="video-label">SurRecon</div><div class="buttons has-addons static-method-group"><button class="button is-small is-link is-light is-active" disabled>SurRecon</button></div></div>
+                  <div class="video-header"><div class="buttons has-addons static-method-group"><button class="button is-small is-link is-light is-active" disabled>SurRecon</button></div></div>
                   <video class="comparison-video" src="./video/surrecon_kf9_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
               </div>
               <div class="column">
                 <div class="video-card">
                   <div class="video-header">
-                    <div class="video-label baseline-label">3DGS</div>
                     <div class="buttons has-addons row-method-group" data-scene="kf9">
                       <button class="button is-small is-link is-light row-method-button is-active" data-scene="kf9" data-method="3dgs">3DGS</button>
                       <button class="button is-small is-link is-light row-method-button" data-scene="kf9" data-method="2dgs">2DGS</button>
@@ -383,6 +198,7 @@
                 </div>
               </div>
             </div>
+          </div>
           </div>
 
           
@@ -395,7 +211,6 @@
           </div>
 
           <div class="content has-text-centered">
-            <!-- <img id="teaser" src="https://placehold.co/600x400" alt="Teaser image" style="width: 100%;"> -->
             <img id="mesh-img" src="./resources/figures/mesh.png" alt="Mesh">
           </div>
 
@@ -433,42 +248,6 @@
       </div>
     </div>
   </section>
-  
-  <!-- <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title is-4" style="font-weight: 700;">BibTeX</h2>
-      <pre><code>@inproceedings{wang2025vggt,
-  title={VGGT: Visual Geometry Grounded Transformer},
-  author={Wang, Jianyuan and Chen, Minghao and Karaev, Nikita and Vedaldi, Andrea and Rupprecht, Christian and Novotny, David},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year={2025}
-}</code></pre>
-    </div>
-  </section> -->
-
-  
-
-  <!-- <section class="section" id="Acknowledgements" style="padding-top: 0rem;">
-    <div class="container is-max-desktop content">
-      <h2 class="title is-4" style="font-weight: 700;">Acknowledgements</h2>
-      <p>
-        Jianyuan Wang is supported by Facebook Research.
-      </p>
-      <p>
-        We are deeply grateful for the insightful discussions and invaluable support provided by Stanislaw Szymanowicz,  Junyu Xie, Johannes Schönberger, Shangzhe Wu, Chuanxia Zheng, Junlin Han, Ang Cao, Nikhil Keetha, Chris Offner, Shangzhan Zhang, Yuxi Xiao, Qianqian Wang, Yinghao Xu, Ceyuan Yang, Nan Xue, Yujun Shen, Roman Shapovalov, João Henriques, and Andrew Zisserman.
-      </p>
-      <p>
-        We appreciate the great examples provided by Depth-Anything-V2, Metric3D V2, MoGe, and FLARE.
-      </p>
-      <p>
-        Special thanks to Jianing Yang, Ang Cao, Zhenggang Tang, Yuchen Fan, Shangzhan Zhang, and Qianqian Wang for providing or verifying the results of their methods.
-      </p>
-    </div>
-  </section> -->
-
-
-  
-
 
   <footer class="footer">
     <div class="container">
@@ -484,33 +263,24 @@
       </div>
     </div>
   </footer>
-  <script src="static/js/comparison.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Set initial camera positions for all model viewers
-      const initialModelViewers = [
-        document.getElementById('QualitativeResult'),
-        document.getElementById('modelViewerInteractive')
-      ];
-      
-      // Apply consistent initial camera settings to all model viewers
-      initialModelViewers.forEach(viewer => {
-        if (viewer) {
-          viewer.addEventListener('load', () => {
-            viewer.cameraOrbit = "180deg 70deg auto";
-            if (viewer.resetTurntableRotation) {
-              viewer.resetTurntableRotation(0);
-            }
-            viewer.jumpCameraToGoal();
-          });
-        }
-      });
+      // Set initial camera positions for model viewer
+      const modelViewer = document.getElementById('modelViewerInteractive');
+      if (modelViewer) {
+        modelViewer.addEventListener('load', () => {
+          modelViewer.cameraOrbit = "180deg 70deg auto";
+          if (modelViewer.resetTurntableRotation) {
+            modelViewer.resetTurntableRotation(0);
+          }
+          modelViewer.jumpCameraToGoal();
+        });
+      }
       
       // Handle interactive mesh thumbnails
       const firstInteractiveThumbnail = document.querySelector('#thumbnail-interactive video, #thumbnail-interactive img');
       if (firstInteractiveThumbnail) {
         firstInteractiveThumbnail.classList.add('thumbnail-selected');
-        // If it's a video, play it
         if (firstInteractiveThumbnail.tagName.toLowerCase() === 'video') {
           firstInteractiveThumbnail.play();
         }
@@ -519,33 +289,25 @@
       document.querySelectorAll('#thumbnail-interactive img, #thumbnail-interactive video').forEach(el => {
         el.addEventListener('click', () => {
           const name = el.getAttribute('name');
-          
-          // Update model viewer with the corresponding GLB file
           const modelViewer = document.getElementById('modelViewerInteractive');
           
           modelViewer.setAttribute('src', `./resources/mesh/surrecon_${name}_n10.glb`);
-          
-          // Reset camera position
           modelViewer.cameraOrbit = "180deg 70deg auto";
           if (modelViewer.resetTurntableRotation) {
             modelViewer.resetTurntableRotation(0);
           }
           modelViewer.jumpCameraToGoal();
 
-          // Remove selection class from all elements
           document.querySelectorAll('#thumbnail-interactive img, #thumbnail-interactive video').forEach(element => {
             element.classList.remove('thumbnail-selected');
           });
           
-          // Add selection class to clicked element
           el.classList.add('thumbnail-selected');
           
-          // Play video if it's a video element
           if (el.tagName.toLowerCase() === 'video') {
             el.play();
           }
           
-          // Pause all other videos
           document.querySelectorAll('#thumbnail-interactive video').forEach(video => {
             if (video !== el) {
               video.pause();
@@ -555,21 +317,10 @@
         });
       });
       
-      // // Handle dropdown change for the third comparison model
-      // document.getElementById('comparisonBaselineSelection').addEventListener('change', function() {
-      //   const selectedName = document.querySelector('#thumbnail-comparison .thumbnail-selected').getAttribute('name');
-      //   const baseline = this.value;
-      //   document.getElementById('modelViewerComparison3').setAttribute('src', `resources/comparison/${baseline}/${selectedName}.glb`);
-      // });
-      
       // Per-row baseline switching
-      const methods = ['3dgs', '2dgs', 'pgsr'];
       const baselineState = {};
 
       function updateBaselineForScene(scene, method) {
-        // Update label text for the row
-        const label = document.querySelector(`.columns .baseline-video[data-scene="${scene}"]`)?.closest('.video-card')?.querySelector('.baseline-label');
-        if (label) label.textContent = method.toUpperCase();
         // Update video src for the specific scene
         const video = document.querySelector(`.baseline-video[data-scene="${scene}"]`);
         if (video) {
