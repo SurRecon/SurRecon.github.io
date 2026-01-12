@@ -305,6 +305,13 @@
               border: 1px solid #ffd3a6;
               box-shadow: none; /* flatter look on color background */
             }
+            /* Orange tint for individual video cards */
+            .video-card {
+              background-color: #ffe7c2;
+              padding: 1rem;
+              border-radius: 6px;
+              border: 1px solid #ffcc99;
+            }
           </style>
 
           <div class="box video-compare-panel">
@@ -320,15 +327,11 @@
                 <div class="video-card">
                   <div class="video-header">
                     <div class="video-label baseline-label">3DGS</div>
-                  <div class="level is-mobile" style="margin-bottom: 0.5rem;">
-                    <div class="level-right" style="width: 100%; justify-content: flex-end;">
-                      <div class="buttons has-addons row-method-group" data-scene="kf1">
-                        <button class="button is-small is-link is-light row-method-button is-active" data-scene="kf1" data-method="3dgs">3DGS</button>
-                        <button class="button is-small is-link is-light row-method-button" data-scene="kf1" data-method="2dgs">2DGS</button>
-                        <button class="button is-small is-link is-light row-method-button" data-scene="kf1" data-method="pgsr">PGSR</button>
-                      </div>
+                    <div class="buttons has-addons row-method-group" data-scene="kf1">
+                      <button class="button is-small is-link is-light row-method-button is-active" data-scene="kf1" data-method="3dgs">3DGS</button>
+                      <button class="button is-small is-link is-light row-method-button" data-scene="kf1" data-method="2dgs">2DGS</button>
+                      <button class="button is-small is-link is-light row-method-button" data-scene="kf1" data-method="pgsr">PGSR</button>
                     </div>
-                  </div>
                   </div>
                   <video class="comparison-video baseline-video" data-scene="kf1" src="./video/3dgs_colmap_kf1_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
@@ -347,15 +350,11 @@
                 <div class="video-card">
                   <div class="video-header">
                     <div class="video-label baseline-label">3DGS</div>
-                  <div class="level is-mobile" style="margin-bottom: 0.5rem;">
-                    <div class="level-right" style="width: 100%; justify-content: flex-end;">
-                      <div class="buttons has-addons row-method-group" data-scene="kf8">
-                        <button class="button is-small is-link is-light row-method-button is-active" data-scene="kf8" data-method="3dgs">3DGS</button>
-                        <button class="button is-small is-link is-light row-method-button" data-scene="kf8" data-method="2dgs">2DGS</button>
-                        <button class="button is-small is-link is-light row-method-button" data-scene="kf8" data-method="pgsr">PGSR</button>
-                      </div>
+                    <div class="buttons has-addons row-method-group" data-scene="kf8">
+                      <button class="button is-small is-link is-light row-method-button is-active" data-scene="kf8" data-method="3dgs">3DGS</button>
+                      <button class="button is-small is-link is-light row-method-button" data-scene="kf8" data-method="2dgs">2DGS</button>
+                      <button class="button is-small is-link is-light row-method-button" data-scene="kf8" data-method="pgsr">PGSR</button>
                     </div>
-                  </div>
                   </div>
                   <video class="comparison-video baseline-video" data-scene="kf8" src="./video/3dgs_colmap_kf8_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
@@ -374,15 +373,11 @@
                 <div class="video-card">
                   <div class="video-header">
                     <div class="video-label baseline-label">3DGS</div>
-                  <div class="level is-mobile" style="margin-bottom: 0.5rem;">
-                    <div class="level-right" style="width: 100%; justify-content: flex-end;">
-                      <div class="buttons has-addons row-method-group" data-scene="kf9">
-                        <button class="button is-small is-link is-light row-method-button is-active" data-scene="kf9" data-method="3dgs">3DGS</button>
-                        <button class="button is-small is-link is-light row-method-button" data-scene="kf9" data-method="2dgs">2DGS</button>
-                        <button class="button is-small is-link is-light row-method-button" data-scene="kf9" data-method="pgsr">PGSR</button>
-                      </div>
+                    <div class="buttons has-addons row-method-group" data-scene="kf9">
+                      <button class="button is-small is-link is-light row-method-button is-active" data-scene="kf9" data-method="3dgs">3DGS</button>
+                      <button class="button is-small is-link is-light row-method-button" data-scene="kf9" data-method="2dgs">2DGS</button>
+                      <button class="button is-small is-link is-light row-method-button" data-scene="kf9" data-method="pgsr">PGSR</button>
                     </div>
-                  </div>
                   </div>
                   <video class="comparison-video baseline-video" data-scene="kf9" src="./video/3dgs_colmap_kf9_renders_depths.mp4" controls muted loop playsinline preload="metadata"></video>
                 </div>
@@ -405,56 +400,30 @@
           </div>
 
 
-          <div class="model-container" id="model-compare-wrapper">
-            <div class="content has-text-justified" style="align-self: flex-start;">
-              <p>Interactive Mesh: You can drag and zoom to view.</p>
-            </div>
-            <!-- Model 1 Viewer with Label -->
-            <div class="model-wrapper-comparison">
+          <h2 class="title is-4">Interactive Mesh</h2>
+          <div class="content has-text-justified" style="align-self: flex-start;">
+            <p>
+              You can drag and zoom to view the SurRecon 3D mesh model. Click the thumbnails below to switch between different scenes.
+            </p>
+          </div>
+
+          <div class="content has-text-centered">
+            <div style="max-width: 600px; margin: 0 auto;">
               <div class="model-label">SurRecon</div>
-              <model-viewer id="modelViewerComparison1" loading="lazy"
+              <model-viewer id="modelViewerInteractive" loading="lazy"
                 touch-action="pan-y" environment-image="legacy"
                 src="resources/mesh/surrecon_s5_n10.glb"
                 zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 1m"
                 max-camera-orbit="auto auto 10m" interaction-prompt="none" shadow-intensity="0" ar
-                style="width: 100%; height: 100%;  background: #ffffff;">
-              </model-viewer>
-            </div>
-            <!-- Model 2 Viewer with Label -->
-            <div class="model-wrapper-comparison">
-              <div class="model-label">2DGS</div>
-              <model-viewer id="modelViewerComparison2" loading="lazy"
-                touch-action="pan-y" environment-image="legacy"
-                src="./resources/mesh/2dgs_s3_n10.glb"
-                zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 1m"
-                max-camera-orbit="auto auto 10m" interaction-prompt="none" shadow-intensity="0" ar
-                style="width: 100%; height: 100%; background: #ffffff;">
-              </model-viewer>
-            </div>
-            <!-- Model 3 Viewer with Label -->
-            <div class="model-wrapper-comparison">
-              <!-- <select id="comparisonBaselineSelection" class="dropdown model-label"> -->
-                <!-- <option value="fast3r">Fast3R</option> -->
-                <!-- <option value="flare">FLARE</option> -->
-                <!-- <option value="cut3r">CUT3R</option> -->
-              <!-- </select> -->
-              <div class="model-label">PGSR</div>
-              <model-viewer id="modelViewerComparison3" loading="lazy"
-                touch-action="pan-y" environment-image="legacy"
-                src="./resources/mesh/pgsr_s3_n10.glb"
-                zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 1m"
-                max-camera-orbit="auto auto 10m" interaction-prompt="none" shadow-intensity="0" ar
-                style="width: 100%; height: 100%; background: #ffffff;">
+                style="width: 100%; height: 480px; background: #ffffff;">
               </model-viewer>
             </div>
           </div>
           <div class="hero-body" style="padding: 0;">
             <div class="content has-text-centered">
-              <div class="thumbnail-container", id="thumbnail-comparison", data-selected-name="Colosseum">                
+              <div class="thumbnail-container", id="thumbnail-interactive", data-selected-name="Colosseum">                
                 <img src="./resources/assets/s5.png" name="s5">
                 <img src="./resources/assets/s3.png" name="s3">
-                <!-- <video src="resources/comparison/assets/fern.mp4" name="fern" loop playsinline muted></video> -->
-                <!-- <video src="resources/comparison/assets/pyramid.mp4" name="pyramid" loop playsinline muted></video> -->
               </div>  
             </div>  
           </div>
@@ -521,9 +490,7 @@
       // Set initial camera positions for all model viewers
       const initialModelViewers = [
         document.getElementById('QualitativeResult'),
-        document.getElementById('modelViewerComparison1'),
-        document.getElementById('modelViewerComparison2'),
-        document.getElementById('modelViewerComparison3')
+        document.getElementById('modelViewerInteractive')
       ];
       
       // Apply consistent initial camera settings to all model viewers
@@ -539,43 +506,34 @@
         }
       });
       
-      // Handle comparison thumbnails
-      const firstComparisonThumbnail = document.querySelector('#thumbnail-comparison video, #thumbnail-comparison img');
-      if (firstComparisonThumbnail) {
-        firstComparisonThumbnail.classList.add('thumbnail-selected');
+      // Handle interactive mesh thumbnails
+      const firstInteractiveThumbnail = document.querySelector('#thumbnail-interactive video, #thumbnail-interactive img');
+      if (firstInteractiveThumbnail) {
+        firstInteractiveThumbnail.classList.add('thumbnail-selected');
         // If it's a video, play it
-        if (firstComparisonThumbnail.tagName.toLowerCase() === 'video') {
-          firstComparisonThumbnail.play();
+        if (firstInteractiveThumbnail.tagName.toLowerCase() === 'video') {
+          firstInteractiveThumbnail.play();
         }
       }
       
-      document.querySelectorAll('#thumbnail-comparison img, #thumbnail-comparison video').forEach(el => {
+      document.querySelectorAll('#thumbnail-interactive img, #thumbnail-interactive video').forEach(el => {
         el.addEventListener('click', () => {
           const name = el.getAttribute('name');
           
-          // Update model viewers with the corresponding GLB files
-          const modelViewer1 = document.getElementById('modelViewerComparison1');
-          const modelViewer2 = document.getElementById('modelViewerComparison2');
-          const modelViewer3 = document.getElementById('modelViewerComparison3');
+          // Update model viewer with the corresponding GLB file
+          const modelViewer = document.getElementById('modelViewerInteractive');
           
-          modelViewer1.setAttribute('src', `./resources/mesh/surrecon_${name}_n10.glb`);
-          modelViewer2.setAttribute('src', `./resources/mesh/2dgs_${name}_n10.glb`);
+          modelViewer.setAttribute('src', `./resources/mesh/surrecon_${name}_n10.glb`);
           
-          // // For the third viewer, check the dropdown selection
-          // const baseline = document.getElementById('comparisonBaselineSelection').value;
-          modelViewer3.setAttribute('src', `./resources/mesh/pgsr_${name}_n10.glb`);
-          
-          // Reset camera positions
-          [modelViewer1, modelViewer2, modelViewer3].forEach(viewer => {
-            viewer.cameraOrbit = "180deg 70deg auto";
-            if (viewer.resetTurntableRotation) {
-              viewer.resetTurntableRotation(0);
-            }
-            viewer.jumpCameraToGoal();
-          });
+          // Reset camera position
+          modelViewer.cameraOrbit = "180deg 70deg auto";
+          if (modelViewer.resetTurntableRotation) {
+            modelViewer.resetTurntableRotation(0);
+          }
+          modelViewer.jumpCameraToGoal();
 
           // Remove selection class from all elements
-          document.querySelectorAll('#thumbnail-comparison img, #thumbnail-comparison video').forEach(element => {
+          document.querySelectorAll('#thumbnail-interactive img, #thumbnail-interactive video').forEach(element => {
             element.classList.remove('thumbnail-selected');
           });
           
@@ -588,7 +546,7 @@
           }
           
           // Pause all other videos
-          document.querySelectorAll('#thumbnail-comparison video').forEach(video => {
+          document.querySelectorAll('#thumbnail-interactive video').forEach(video => {
             if (video !== el) {
               video.pause();
               video.currentTime = 0;
